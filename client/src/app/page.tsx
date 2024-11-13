@@ -38,7 +38,7 @@ export default function Home() {
       </section>
       <section className="my-20">
         <div className="flex flex-row justify-center gap-10">
-          <Card className="grow">
+          <Card className="basis-1/3 flex flex-col justify-between">
             <CardHeader>
               <CardTitle>Share Your Message</CardTitle>
               <CardDescription>
@@ -46,10 +46,12 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button className="w-full">Leave your note</Button>
+              <Button className="w-full py-5" variant="outline">
+                Leave your note
+              </Button>
             </CardFooter>
           </Card>
-          <Card className="grow">
+          <Card className="basis-1/3 flex flex-col justify-between">
             <CardHeader>
               <CardTitle>Browse Messages</CardTitle>
               <CardDescription>
@@ -58,10 +60,12 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button className="w-full">Browse Notes</Button>
+              <Button className="w-full py-5" variant="outline">
+                Browse notes
+              </Button>
             </CardFooter>
           </Card>
-          <Card className="grow">
+          <Card className="basis-1/3 flex flex-col justify-between">
             <CardHeader>
               <CardTitle>Detail Messages</CardTitle>
               <CardDescription>

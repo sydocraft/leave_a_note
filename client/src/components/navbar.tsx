@@ -44,7 +44,7 @@ export default function Navbar() {
           <div className={`${SG.className} my-auto`}>LeaveANote</div>
           <div className="flex flex-row gap-5">
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="gap-3">
                 <NavigationMenuItem>
                   <Link href="/docs" legacyBehavior passHref>
                     <NavigationMenuLink
