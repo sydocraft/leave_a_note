@@ -30,6 +30,9 @@ import Link from "next/link";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
+import { Sour_Gummy } from "next/font/google";
+
+const SG = Sour_Gummy({ subsets: ["latin"] });
 
 export default function Navbar() {
   const { setTheme } = useTheme();
@@ -38,7 +41,7 @@ export default function Navbar() {
     <div className="m-5 fixed top-0 left-0 right-0 ">
       <Card>
         <div className="p-3 flex flex-row justify-between container mx-auto">
-          <div className="my-auto">LeaveANote </div>
+          <div className={`${SG.className} my-auto`}>LeaveANote</div>
           <div className="flex flex-row gap-5">
             <NavigationMenu>
               <NavigationMenuList>

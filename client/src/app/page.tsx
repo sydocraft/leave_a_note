@@ -1,10 +1,71 @@
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Sour_Gummy } from "next/font/google";
+import { ArrowRight, HeartHandshake } from "lucide-react";
+
+const SG = Sour_Gummy({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div className="mt-72">
-      <Button>Click me</Button>
-      <div>1233333333333333333333333</div>
+    <div className="pt-32 container mx-auto ">
+      <section className="my-20">
+        <div className="flex flex-col gap-10">
+          <div
+            className={`${SG.className} mx-auto text-3xl font-semibold w-1/3 text-center`}
+          >
+            a bunch of the untold words, sent through the song
+          </div>
+          <p className="text-lg text-muted-foreground mx-auto">
+            Express your untold message through the song.
+          </p>
+          <div className="flex flex-row justify-center gap-4">
+            <Button>
+              Leave your note <ArrowRight />
+            </Button>
+            <Button>
+              Support Us
+              <HeartHandshake />
+            </Button>
+          </div>
+        </div>
+      </section>
+      <section className="my-20">
+        <div className="flex flex-row justify-center gap-10">
+          <Card className="grow">
+            <CardHeader>
+              <CardTitle>Share Your Message</CardTitle>
+              <CardDescription>
+                Choose a song and write a heartfelt message to someone special.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="grow">
+            <CardHeader>
+              <CardTitle>Browse Messages</CardTitle>
+              <CardDescription>
+                Find messages that were written for you. Search by your name to
+                discover heartfelt dedications.
+              </CardDescription>
+            </CardHeader>
+          </Card>
+          <Card className="grow">
+            <CardHeader>
+              <CardTitle>Detail Messages</CardTitle>
+              <CardDescription>
+                You can click on any message card to read the full story and
+                listen to the chosen song!
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+      </section>
     </div>
   );
 }
