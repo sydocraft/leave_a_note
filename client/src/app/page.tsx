@@ -45,6 +45,9 @@ export default function Home() {
                 Choose a song and write a heartfelt message to someone special.
               </CardDescription>
             </CardHeader>
+            <CardFooter>
+              <Button className="w-full">Leave your note</Button>
+            </CardFooter>
           </Card>
           <Card className="grow">
             <CardHeader>
@@ -54,6 +57,9 @@ export default function Home() {
                 discover heartfelt dedications.
               </CardDescription>
             </CardHeader>
+            <CardFooter>
+              <Button className="w-full">Browse Notes</Button>
+            </CardFooter>
           </Card>
           <Card className="grow">
             <CardHeader>
