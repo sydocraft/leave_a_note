@@ -41,12 +41,14 @@ export default function Navbar() {
     <div className="m-5 fixed top-0 left-0 right-0 ">
       <Card>
         <div className="p-3 flex flex-row justify-between container mx-auto">
-          <div className={`${SG.className} my-auto`}>LeaveANote</div>
+          <div className={`${SG.className} my-auto`}>
+            <Link href="/">LeaveANote</Link>
+          </div>
           <div className="flex flex-row gap-5">
             <NavigationMenu>
               <NavigationMenuList className="gap-3">
                 <NavigationMenuItem>
-                  <Link href="/docs" legacyBehavior passHref>
+                  <Link href="/createnote" legacyBehavior passHref>
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
                     >
@@ -55,7 +57,7 @@ export default function Navbar() {
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/docs" legacyBehavior passHref>
+                  <Link href="/browsenote" legacyBehavior passHref>
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
                     >
@@ -64,7 +66,7 @@ export default function Navbar() {
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/docs" legacyBehavior passHref>
+                  <Link href="/supportus" legacyBehavior passHref>
                     <NavigationMenuLink
                       className={navigationMenuTriggerStyle()}
                     >

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Sour_Gummy } from "next/font/google";
 import { ArrowRight, HeartHandshake } from "lucide-react";
+import Link from "next/link";
 
 const SG = Sour_Gummy({ subsets: ["latin"] });
 
@@ -26,9 +27,11 @@ export default function Home() {
             Express your untold message through the song.
           </p>
           <div className="flex flex-row justify-center gap-4">
-            <Button>
-              Leave your note <ArrowRight />
-            </Button>
+            <Link href="/createnote">
+              <Button>
+                Leave a note <ArrowRight />
+              </Button>
+            </Link>
             <Button>
               Support Us
               <HeartHandshake />
@@ -46,9 +49,11 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button className="w-full py-5" variant="outline">
-                Leave your note
-              </Button>
+              <Link href="/createnote" className="w-full">
+                <Button className="w-full py-5" variant="outline">
+                  Leave your note
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
           <Card className="basis-1/3 flex flex-col justify-between">
@@ -60,9 +65,11 @@ export default function Home() {
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button className="w-full py-5" variant="outline">
-                Browse notes
-              </Button>
+              <Link href="/browsenote" className="w-full">
+                <Button className="w-full py-5" variant="outline">
+                  Browse notes
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
           <Card className="basis-1/3 flex flex-col justify-between">
