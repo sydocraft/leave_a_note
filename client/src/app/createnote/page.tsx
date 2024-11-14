@@ -126,13 +126,13 @@ export default function Createnote() {
       <section className="my-20">
         <Card className="w-1/2 p-6 mx-auto">
           <CardHeader>
-            <CardTitle className="flex flex-row gap-8">
+            <CardTitle className="flex flex-row gap-5">
               <div>Dear {"{Someone}"}, ... </div> <Send />
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col gap-5">
-              <div>
+              <div className="flex flex-col gap-3">
                 <Label>Recipient Name</Label>
                 <Input
                   type="text"
@@ -140,7 +140,7 @@ export default function Createnote() {
                   onChange={handleRecipientNameChange}
                 />
               </div>
-              <div>
+              <div className="flex flex-col gap-3">
                 <Label>Message</Label>
                 <Input
                   type="text"
@@ -148,25 +148,24 @@ export default function Createnote() {
                   onChange={handleMessageChange}
                 />
               </div>
-              <div className="flex flex-row gap-5">
-                <div>
-                  <Label>Your Name</Label>
-                  <Input
-                    type="text"
-                    value={senderName}
-                    onChange={handleSenderNameChange}
-                    disabled={sendAnon}
-                  />
-                </div>
-                <div className="flex flex-row gap-3 mt-auto">
-                  <Checkbox onClick={handleSendAnonChange} checked={sendAnon} />
-                  <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    Send anonymously
-                  </label>
-                </div>
+
+              <div className="flex flex-col gap-3">
+                <Label>Your Name</Label>
+                <Input
+                  type="text"
+                  value={senderName}
+                  onChange={handleSenderNameChange}
+                  disabled={sendAnon}
+                />
+              </div>
+              <div className="flex flex-row gap-3 mt-auto">
+                <Checkbox onClick={handleSendAnonChange} checked={sendAnon} />
+                <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  Send anonymously
+                </label>
               </div>
 
-              <Button type="submit" onClick={handleSubmit}>
+              <Button className="mt-5" type="submit" onClick={handleSubmit}>
                 Submit
               </Button>
             </div>
