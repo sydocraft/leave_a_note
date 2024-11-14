@@ -32,10 +32,12 @@ export default function Home() {
                 Leave a note <ArrowRight />
               </Button>
             </Link>
-            <Button>
-              Support Us
-              <HeartHandshake />
-            </Button>
+            <Link href="/supportus">
+              <Button>
+                Support Us
+                <HeartHandshake />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
