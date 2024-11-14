@@ -12,6 +12,10 @@ const NoteSchema = new mongoose.Schema({
   sender_name: {
     type: String,
   },
+  send_anon: {
+    type: Boolean,
+    required: true,
+  },
   published_date: {
     type: Date,
     default: Date.now,

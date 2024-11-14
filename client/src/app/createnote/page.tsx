@@ -3,6 +3,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
+import axios from "axios";
 
 import {
   Card,
@@ -29,7 +30,7 @@ export default function Createnote() {
   useEffect(() => {
     if (error) {
       toast({
-        title: "Error!",
+        title: "Oopss!",
         description: error,
         variant: "destructive",
       });
@@ -63,20 +64,61 @@ export default function Createnote() {
       if (!recipientName || !message) {
         setError("Both recipient name and message are required.");
         return;
+      } else {
+        const body = {
+          recipient_name: recipientName,
+          message: message,
+          sender_name: "",
+          send_anon: true,
+        };
+
+        axios
+          .post(`${process.env.NEXT_PUBLIC_API_URL}/notes`, body)
+          .then((res) => {
+            setRecipientName("");
+            setMessage("");
+            setSenderName("");
+            setSendAnon(false);
+
+            toast({
+              title: "Yay!",
+              description: "Notes succesfully submitted.",
+            });
+          })
+          .catch((err) => {
+            setError("Error submitting notes.");
+          });
       }
     } else {
       if (!recipientName || !message || !senderName) {
         setError("Recipient name, sender name and message are required.");
         return;
+      } else {
+        const body = {
+          recipient_name: recipientName,
+          message: message,
+          sender_name: senderName,
+          send_anon: false,
+        };
+
+        axios
+          .post(`${process.env.NEXT_PUBLIC_API_URL}/notes`, body)
+          .then((res) => {
+            setRecipientName("");
+            setMessage("");
+            setSenderName("");
+            setSendAnon(false);
+
+            toast({
+              title: "Yay!",
+              description: "Notes succesfully submitted.",
+            });
+          })
+          .catch((err) => {
+            setError("Error submitting notes.");
+          });
       }
     }
-
-    console.log("Form submitted:", {
-      recipientName,
-      message,
-      senderName,
-      sendAnon,
-    });
   };
 
   return (
