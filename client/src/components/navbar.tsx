@@ -41,7 +41,7 @@ export default function Navbar() {
     <div className="m-5 fixed top-0 left-0 right-0 ">
       <Card>
         <div className="p-3 flex flex-row justify-between container mx-auto">
-          <div className={`${SG.className} my-auto`}>
+          <div className={`${SG.className} my-auto text-2xl`}>
             <Link href="/">LeaveANote</Link>
           </div>
           <div className="flex flex-row gap-5">

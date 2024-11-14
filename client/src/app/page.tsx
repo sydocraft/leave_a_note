@@ -19,7 +19,7 @@ export default function Home() {
       <section className="my-20">
         <div className="flex flex-col gap-10">
           <div
-            className={`${SG.className} mx-auto text-3xl font-semibold w-1/3 text-center`}
+            className={`${SG.className} mx-auto text-5xl font-semibold w-1/3 text-center`}
           >
             a bunch of the untold words, sent through the song
           </div>
@@ -43,7 +43,7 @@ export default function Home() {
         <div className="flex flex-row justify-center gap-10">
           <Card className="basis-1/3 flex flex-col justify-between">
             <CardHeader>
-              <CardTitle>Share Your Message</CardTitle>
+              <CardTitle className="my-2">Share Your Message</CardTitle>
               <CardDescription>
                 Choose a song and write a heartfelt message to someone special.
               </CardDescription>
@@ -58,7 +58,7 @@ export default function Home() {
           </Card>
           <Card className="basis-1/3 flex flex-col justify-between">
             <CardHeader>
-              <CardTitle>Browse Messages</CardTitle>
+              <CardTitle className="my-2">Browse Messages</CardTitle>
               <CardDescription>
                 Find messages that were written for you. Search by your name to
                 discover heartfelt dedications.
@@ -74,7 +74,7 @@ export default function Home() {
           </Card>
           <Card className="basis-1/3 flex flex-col justify-between">
             <CardHeader>
-              <CardTitle>Detail Messages</CardTitle>
+              <CardTitle className="my-2">Detail Messages</CardTitle>
               <CardDescription>
                 You can click on any message card to read the full story and
                 listen to the chosen song!
