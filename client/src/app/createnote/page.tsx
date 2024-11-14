@@ -18,6 +18,9 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Send } from "lucide-react";
+import { Sour_Gummy } from "next/font/google";
+
+const SG = Sour_Gummy({ subsets: ["latin"] });
 
 export default function Createnote() {
   const { toast } = useToast();
@@ -124,6 +127,9 @@ export default function Createnote() {
   return (
     <div className="pt-32 container mx-auto ">
       <section className="my-20">
+        <div className={`${SG.className}  text-5xl  text-center mb-10 `}>
+          LeaveANote
+        </div>
         <Card className="w-1/2 p-6 mx-auto">
           <CardHeader>
             <CardTitle className="flex flex-row gap-5">
