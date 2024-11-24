@@ -18,6 +18,28 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(404).json({ nonotesfound: "No notes found" }));
 });
 
+router.get("/for/browsenote", (req, res) => {
+  const search = req.query.search || "";
+
+  let query = Note.find();
+
+  if (search) {
+    query = query.where({
+      $or: [{ recipient_name: { $regex: `^${search}$`, $options: "i" } }],
+    });
+  }
+
+  query
+    .sort({ published_date: -1 })
+    .then((notes) => {
+      if (notes.length === 0) {
+        return res.json({ nonotesfound: "No notes found" });
+      }
+      res.json(notes);
+    })
+    .catch((err) => res.status(500).json({ error: err.message }));
+});
+
 // @route   GET api/books/:id
 // @desc    Get single book by id
 // @access  Public

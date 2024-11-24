@@ -144,6 +144,7 @@ export default function Createnote() {
                   type="text"
                   value={recipientName}
                   onChange={handleRecipientNameChange}
+                  maxLength={25}
                 />
               </div>
               <div className="flex flex-col gap-3">
@@ -152,6 +153,7 @@ export default function Createnote() {
                   type="text"
                   value={message}
                   onChange={handleMessageChange}
+                  maxLength={600}
                 />
               </div>
 
@@ -162,6 +164,7 @@ export default function Createnote() {
                   value={senderName}
                   onChange={handleSenderNameChange}
                   disabled={sendAnon}
+                  maxLength={25}
                 />
               </div>
               <div className="flex flex-row gap-3 mt-auto">
