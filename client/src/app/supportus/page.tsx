@@ -20,7 +20,9 @@ export default function Supportus() {
             keep this service running smoothly for everyone :)
           </p>
 
-          <Button className="w-1/6 mx-auto">Donate </Button>
+          <Button disabled className="w-1/6 mx-auto">
+            Donate
+          </Button>
         </div>
       </section>
     </div>
