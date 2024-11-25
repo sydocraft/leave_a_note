@@ -1,3 +1,6 @@
+"use client";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,18 +16,59 @@ import Link from "next/link";
 
 const SG = Sour_Gummy({ subsets: ["latin"] });
 
+const marqueeContainerStyle: React.CSSProperties = {
+  width: "100%",
+  overflow: "hidden",
+  position: "relative",
+};
+
+const marqueeContentStyle: React.CSSProperties = {
+  animation: "marquee 20s linear infinite",
+};
+
+// Define keyframes for the marquee animation
+const marqueeKeyframes = `
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+`;
+
+interface Notes {
+  _id: string;
+  recipient_name: string;
+  message: string;
+  sender_name: string;
+  send_anon: string;
+  published_date: Date;
+}
+
 export default function Home() {
+  const [notes, setNotes] = useState<Notes[]>([]);
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/notes/for/browsenote`)
+      .then((res) => {
+        setNotes(res.data.notes);
+      })
+      .catch((err) => {
+        setNotes([]);
+      });
+  }, []);
+
   return (
     <div className="pt-32 container mx-auto ">
       <section className="my-20">
         <div className="flex flex-col gap-10">
           <div
-            className={`${SG.className} mx-auto text-5xl font-semibold w-1/3 text-center`}
+            className={`${SG.className} mx-auto text-6xl font-semibold w-1/3 text-center`}
           >
-            a bunch of the untold words, sent through the song
+            messages that matter, notes that last
           </div>
           <p className="text-lg text-muted-foreground mx-auto">
-            Express your untold message through the song.
+            Because sometimes, a note is all it takes to brighten someone's
+            world.
           </p>
           <div className="flex flex-row justify-center gap-4">
             <Link href="/createnote">
@@ -76,13 +120,46 @@ export default function Home() {
           </Card>
           <Card className="basis-1/3 flex flex-col justify-between">
             <CardHeader>
-              <CardTitle className="my-2">Detail Messages</CardTitle>
+              <CardTitle className="my-2">Leave a Like</CardTitle>
               <CardDescription>
-                You can click on any message card to read the full story and
-                listen to the chosen song!
+                "Like" notes that resonate with you, showing appreciation for
+                the message and encourage others to spread positivity.
               </CardDescription>
             </CardHeader>
+            <CardFooter>
+              <Link href="/browsenote" className="w-full">
+                <Button className="w-full py-5" variant="outline">
+                  Fav notes
+                </Button>
+              </Link>
+            </CardFooter>
           </Card>
+        </div>
+      </section>
+      <section className="my-20">
+        <div>
+          <style>{marqueeKeyframes}</style>
+          <div style={marqueeContainerStyle}>
+            <div className="flex flex-row gap-1" style={marqueeContentStyle}>
+              {notes.map((note) => (
+                <Card key={note._id} className="break-words w-1/4 ">
+                  <CardHeader>
+                    <CardTitle className="flex flex-row gap-5">
+                      <div className="my-auto">to: {note.recipient_name}</div>
+                    </CardTitle>
+                    <CardDescription>{note.message}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    {note.send_anon ? (
+                      <CardTitle>*sent anonymously</CardTitle>
+                    ) : (
+                      <CardTitle>from: {note.sender_name}</CardTitle>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </div>
