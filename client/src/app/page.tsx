@@ -77,7 +77,7 @@ export default function Home() {
           <div className="flex flex-row justify-center gap-10">
             <Card className="basis-1/3 flex flex-col justify-between">
               <CardHeader>
-                <CardTitle className="my-2">Share Your Message</CardTitle>
+                <CardTitle className="my-2">Send Your Message</CardTitle>
                 <CardDescription>
                   Leave a heartfelt note for your loved ones to cherish forever.
                 </CardDescription>
@@ -108,10 +108,10 @@ export default function Home() {
             </Card>
             <Card className="basis-1/3 flex flex-col justify-between">
               <CardHeader>
-                <CardTitle className="my-2">Leave a Like</CardTitle>
+                <CardTitle className="my-2">Share Messages</CardTitle>
                 <CardDescription>
-                  "Like" notes that resonate with you, showing appreciation for
-                  the message and encourage others to spread positivity.
+                  Share your favorite notes with others, spreading love and
+                  positivity.
                 </CardDescription>
               </CardHeader>
               <CardFooter>
