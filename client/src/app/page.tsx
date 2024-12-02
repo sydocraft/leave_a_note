@@ -134,12 +134,12 @@ export default function Home() {
             className="mb-5"
           >
             {notes.map((note) => (
-              <Card key={note._id} className="break-words mx-1  w-80 h-60 ">
+              <Card key={note._id} className="break-words mx-1  w-80 h-52 ">
                 <CardHeader>
                   <CardTitle className="flex flex-row gap-5">
                     <div className="my-auto">to: {note.recipient_name}</div>
                   </CardTitle>
-                  <CardDescription className="line-clamp-5">
+                  <CardDescription className="line-clamp-3">
                     {note.message}
                   </CardDescription>
                 </CardHeader>
@@ -155,12 +155,12 @@ export default function Home() {
           </Marquee>
           <Marquee speed={50} direction="left" pauseOnHover={true}>
             {notes.map((note) => (
-              <Card key={note._id} className="break-words mx-1  w-80 h-60 ">
+              <Card key={note._id} className="break-words mx-1  w-80 h-52 ">
                 <CardHeader>
                   <CardTitle className="flex flex-row gap-5">
                     <div className="my-auto">to: {note.recipient_name}</div>
                   </CardTitle>
-                  <CardDescription className="line-clamp-5">
+                  <CardDescription className="line-clamp-3">
                     {note.message}
                   </CardDescription>
                 </CardHeader>

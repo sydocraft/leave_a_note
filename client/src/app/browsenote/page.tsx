@@ -6,6 +6,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Send } from "lucide-react";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import {
   Card,
   CardContent,
   CardDescription,
@@ -123,26 +132,54 @@ export default function Browsenote() {
         )}
 
         {notes.length > 0 && (
-          <div className="grid grid-cols-3 gap-5 p-8">
+          <div className="grid grid-cols-3 gap-5 p-8 ">
             {notes.map((note) => (
-              <Card key={note._id} className="break-words">
-                <CardHeader>
-                  <CardTitle className="flex flex-row gap-5">
-                    <div className="my-auto">to: {note.recipient_name}</div>
-                    <Send />
-                  </CardTitle>
-                  <CardDescription className={`${SG.className}`}>
-                    {note.message}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {note.send_anon ? (
-                    <CardTitle>*sent anonymously</CardTitle>
-                  ) : (
-                    <CardTitle>from: {note.sender_name}</CardTitle>
-                  )}
-                </CardContent>
-              </Card>
+              <Dialog key={note._id}>
+                <DialogTrigger>
+                  <Card className="break-words h-full">
+                    <CardHeader>
+                      <CardTitle className="flex flex-row gap-5">
+                        <div className="my-auto">to: {note.recipient_name}</div>
+                        <Send />
+                      </CardTitle>
+                      <CardDescription
+                        className={`${SG.className} text-left	line-clamp-4`}
+                      >
+                        {note.message}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="text-left	">
+                      {note.send_anon ? (
+                        <CardTitle>*sent anonymously</CardTitle>
+                      ) : (
+                        <CardTitle>from: {note.sender_name}</CardTitle>
+                      )}
+                    </CardContent>
+                  </Card>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogTitle>Dear {note.recipient_name},</DialogTitle>
+                  <DialogDescription>{note.message}</DialogDescription>
+                  <DialogFooter>
+                    <CardContent className="text-left	">
+                      {note.send_anon ? (
+                        <div>
+                          <CardTitle>Sincerely,</CardTitle>
+                          <CardTitle>anonymous</CardTitle>
+                        </div>
+                      ) : (
+                        <div>
+                          <CardTitle>Sincerely,</CardTitle>
+                          <CardTitle>{note.sender_name}</CardTitle>
+                        </div>
+                      )}
+                    </CardContent>
+                  </DialogFooter>
+                  <div>
+                    <Button>Save</Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         )}
