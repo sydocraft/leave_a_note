@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -45,6 +45,7 @@ const SG = Sour_Gummy({ subsets: ["latin"] });
 
 export default function Navbar() {
   const { setTheme } = useTheme();
+  const [openSheet, setOpenSheet] = useState(false);
 
   return (
     <div className="m-5 fixed top-0 left-0 right-0 ">
@@ -54,7 +55,7 @@ export default function Navbar() {
             <Link href="/">LeaveANote</Link>
           </div>
           <div className="flex flex-row gap-5">
-            <Sheet>
+            <Sheet open={openSheet} onOpenChange={setOpenSheet}>
               <SheetTrigger className="sm:hidden" asChild>
                 <Button variant="outline" size="icon">
                   <Menu />
@@ -73,6 +74,9 @@ export default function Navbar() {
                       <Link href="/createnote" legacyBehavior passHref>
                         <NavigationMenuLink
                           className={navigationMenuTriggerStyle()}
+                          onClick={() => {
+                            setOpenSheet(false);
+                          }}
                         >
                           Get Started
                         </NavigationMenuLink>
@@ -82,6 +86,9 @@ export default function Navbar() {
                       <Link href="/browsenote" legacyBehavior passHref>
                         <NavigationMenuLink
                           className={navigationMenuTriggerStyle()}
+                          onClick={() => {
+                            setOpenSheet(false);
+                          }}
                         >
                           Browse
                         </NavigationMenuLink>
@@ -91,6 +98,9 @@ export default function Navbar() {
                       <Link href="/supportus" legacyBehavior passHref>
                         <NavigationMenuLink
                           className={navigationMenuTriggerStyle()}
+                          onClick={() => {
+                            setOpenSheet(false);
+                          }}
                         >
                           Support
                         </NavigationMenuLink>
