@@ -127,10 +127,12 @@ export default function Createnote() {
   return (
     <div className="pt-32 container mx-auto ">
       <section className="my-20">
-        <div className={`${SG.className}  text-5xl  text-center mb-10 `}>
+        <div
+          className={`${SG.className}  text-3xl sm:text-5xl  text-center mb-10 `}
+        >
           LeaveANote
         </div>
-        <Card className="w-1/2 p-6 mx-auto">
+        <Card className="w-10/12 lg:w-1/2 p-2 lg:p-6 mx-auto">
           <CardHeader>
             <CardTitle className="flex flex-row gap-5">
               <div>Dear {"{Someone}"}, ... </div> <Send />
