@@ -109,10 +109,12 @@ export default function Browsenote() {
   return (
     <div className="pt-32 container mx-auto ">
       <section className="my-20">
-        <div className={`${SG.className} text-5xl text-center mb-10`}>
+        <div
+          className={`${SG.className} text-3xl sm:text-5xl  text-center mb-10`}
+        >
           LeaveANote
         </div>
-        <div className="flex flex-row w-1/3 p-6 mx-auto gap-3">
+        <div className="flex sm:flex-row flex-col sm:w-1/2 lg:w-1/3 w-10/12 p-6 mx-auto gap-3">
           <Input
             placeholder="Recipient Name"
             type="text"
@@ -132,7 +134,7 @@ export default function Browsenote() {
         )}
 
         {notes.length > 0 && (
-          <div className="grid grid-cols-3 gap-5 p-8 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 p-8 ">
             {notes.map((note) => (
               <Dialog key={note._id}>
                 <DialogTrigger>
@@ -157,26 +159,26 @@ export default function Browsenote() {
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="w-10/12">
                   <DialogTitle>Dear {note.recipient_name},</DialogTitle>
                   <DialogDescription>{note.message}</DialogDescription>
                   <DialogFooter>
-                    <CardContent className="text-left	">
+                    <CardContent className="px-0	">
                       {note.send_anon ? (
                         <div>
                           <CardTitle>Sincerely,</CardTitle>
-                          <CardTitle>anonymous</CardTitle>
+                          <CardTitle>anonymous.</CardTitle>
                         </div>
                       ) : (
                         <div>
                           <CardTitle>Sincerely,</CardTitle>
-                          <CardTitle>{note.sender_name}</CardTitle>
+                          <CardTitle>{note.sender_name}.</CardTitle>
                         </div>
                       )}
                     </CardContent>
                   </DialogFooter>
                   <div>
-                    <Button>Save</Button>
+                    <Button className="w-full sm:w-min">Save</Button>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -188,7 +190,7 @@ export default function Browsenote() {
           <div className="flex justify-center gap-4 mt-6">
             <Button
               variant="outline"
-              className="w-36"
+              className="sm:w-36 w-10"
               disabled={currentPage === 1}
               onClick={() => handlePageChange(currentPage - 1)}
             >
@@ -199,7 +201,7 @@ export default function Browsenote() {
             </span>
             <Button
               variant="outline"
-              className="w-36"
+              className="sm:w-36 w-10"
               disabled={currentPage === totalPages}
               onClick={() => handlePageChange(currentPage + 1)}
             >
