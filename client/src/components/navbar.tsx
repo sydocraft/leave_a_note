@@ -55,7 +55,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-row gap-5">
             <Sheet>
-              <SheetTrigger className="sm:hidden">
+              <SheetTrigger className="sm:hidden" asChild>
                 <Button variant="outline" size="icon">
                   <Menu />
                 </Button>
