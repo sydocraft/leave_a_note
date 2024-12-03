@@ -47,35 +47,39 @@ export default function Home() {
   return (
     <>
       <div className="pt-32 container mx-auto ">
-        <section className="my-20">
-          <div className="flex flex-col gap-10">
-            <div
-              className={`${SG.className} mx-auto text-6xl font-semibold w-1/3 text-center`}
+        <section className="my-20 px-10 flex flex-col gap-5">
+          <div
+            className={`${SG.className} font-semibold text-3xl sm:text-5xl text-center md:w-1/2 md:mx-auto`}
+          >
+            messages that matter, notes that last
+          </div>
+          <p className="text-sm mt-10 sm:text-lg text-muted-foreground text-center ">
+            Because sometimes, a note is all it takes to brighten someone's
+            world.
+          </p>
+          <div className="flex flex-col sm:flex-row sm:justify-center gap-5 mt-10">
+            <Link
+              href="/createnote"
+              className="w-full sm:w-1/4 md:w-1/5 lg:w-1/6"
             >
-              messages that matter, notes that last
-            </div>
-            <p className="text-lg text-muted-foreground mx-auto">
-              Because sometimes, a note is all it takes to brighten someone's
-              world.
-            </p>
-            <div className="flex flex-row justify-center gap-4">
-              <Link href="/createnote">
-                <Button>
-                  Leave a note <ArrowRight />
-                </Button>
-              </Link>
-              <Link href="/supportus">
-                <Button>
-                  Support Us
-                  <HeartHandshake />
-                </Button>
-              </Link>
-            </div>
+              <Button className="w-full">
+                Leave a note <ArrowRight />
+              </Button>
+            </Link>
+            <Link
+              href="/supportus"
+              className="w-full sm:w-1/4 md:w-1/5 lg:w-1/6"
+            >
+              <Button className="w-full">
+                Support Us
+                <HeartHandshake />
+              </Button>
+            </Link>
           </div>
         </section>
-        <section className="my-20">
-          <div className="flex flex-row justify-center gap-10">
-            <Card className="basis-1/3 flex flex-col justify-between">
+        <section className="my-20 px-10">
+          <div className="grid grid-cols-1 md:grid-cols-3  gap-5">
+            <Card className=" flex flex-col justify-between">
               <CardHeader>
                 <CardTitle className="my-2">Send Your Message</CardTitle>
                 <CardDescription>
@@ -90,7 +94,7 @@ export default function Home() {
                 </Link>
               </CardFooter>
             </Card>
-            <Card className="basis-1/3 flex flex-col justify-between">
+            <Card className=" flex flex-col justify-between">
               <CardHeader>
                 <CardTitle className="my-2">Browse Messages</CardTitle>
                 <CardDescription>
@@ -106,18 +110,17 @@ export default function Home() {
                 </Link>
               </CardFooter>
             </Card>
-            <Card className="basis-1/3 flex flex-col justify-between">
+            <Card className=" flex flex-col justify-between">
               <CardHeader>
-                <CardTitle className="my-2">Share Messages</CardTitle>
+                <CardTitle className="my-2">Save Messages</CardTitle>
                 <CardDescription>
-                  Share your favorite notes with others, spreading love and
-                  positivity.
+                  Save your favorite note if it means a lot to you.
                 </CardDescription>
               </CardHeader>
               <CardFooter>
                 <Link href="/browsenote" className="w-full">
                   <Button className="w-full py-5" variant="outline">
-                    Fav notes
+                    Save notes
                   </Button>
                 </Link>
               </CardFooter>
