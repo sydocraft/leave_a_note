@@ -161,7 +161,9 @@ export default function Browsenote() {
                 </DialogTrigger>
                 <DialogContent className="w-10/12">
                   <DialogTitle>Dear {note.recipient_name},</DialogTitle>
-                  <DialogDescription>{note.message}</DialogDescription>
+                  <DialogDescription className="italic ">
+                    {note.message}
+                  </DialogDescription>
                   <DialogFooter>
                     <CardContent className="px-0	">
                       {note.send_anon ? (
