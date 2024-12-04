@@ -14,6 +14,7 @@ import { Sour_Gummy } from "next/font/google";
 import { ArrowRight, HeartHandshake } from "lucide-react";
 import Link from "next/link";
 import Marquee from "react-fast-marquee";
+import { TypeAnimation } from "react-type-animation";
 
 const SG = Sour_Gummy({ subsets: ["latin"] });
 
@@ -48,14 +49,43 @@ export default function Home() {
     <>
       <div className="pt-32 container mx-auto ">
         <section className="my-20 px-10 flex flex-col gap-5">
-          <div
+          {/* <div
             className={`${SG.className} font-semibold text-3xl sm:text-5xl text-center md:w-1/2 md:mx-auto`}
           >
             messages that matter, notes that last
+          </div> */}
+          <div
+            className={`${SG.className} font-semibold text-3xl sm:text-5xl text-center md:w-1/2 md:mx-auto`}
+          >
+            <TypeAnimation
+              sequence={[
+                "messages that matter, notes that last", // Types 'One'
+                1000, // Waits 1s
+
+                () => {
+                  console.log("Sequence completed");
+                },
+              ]}
+              wrapper="span"
+              cursor={false}
+              repeat={1}
+            />
           </div>
+
           <p className="text-sm mt-10 sm:text-lg text-muted-foreground text-center ">
-            Because sometimes, a note is all it takes to brighten someone's
-            world.
+            <TypeAnimation
+              sequence={[
+                ` Because sometimes, a note is all it takes to brighten someone's world.`, // Types 'One'
+                1000, // Waits 1s
+
+                () => {
+                  console.log("Sequence completed");
+                },
+              ]}
+              wrapper="span"
+              cursor={false}
+              repeat={1}
+            />
           </p>
           <div className="flex flex-col sm:flex-row sm:justify-center gap-5 mt-10">
             <Link
