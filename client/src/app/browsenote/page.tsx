@@ -21,6 +21,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  Font,
+} from "@react-pdf/renderer";
+import ReactPDF from "@react-pdf/renderer";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -36,6 +45,65 @@ interface Notes {
   send_anon: string;
   published_date: Date;
 }
+
+Font.register({
+  family: "Montserrat",
+  src: "https://fonts.gstatic.com/s/montserrat/v10/zhcz-_WihjSQC0oHJ9TCYC3USBnSvpkopQaUR-2r7iU.ttf",
+});
+
+const styles = StyleSheet.create({
+  page: {
+    flexDirection: "row",
+    backgroundColor: "#E4E4E4",
+  },
+  section: {
+    margin: 10,
+    padding: 40,
+    flexGrow: 1,
+  },
+  text_message: {
+    fontSize: 14,
+    fontFamily: "Montserrat",
+    marginTop: 20,
+    marginBottom: 20,
+    textAlign: "justify",
+  },
+  text_people: {
+    fontSize: 14,
+    fontFamily: "Montserrat",
+  },
+  text_footer: {
+    fontSize: 10,
+    marginTop: 20,
+    textAlign: "center",
+    color: "grey",
+    fontFamily: "Montserrat",
+  },
+});
+
+// MyDocument accepts dynamic props (message, sender, recipient, etc.)
+const MyDocument = ({
+  message,
+  recipient,
+  sender,
+}: {
+  message: string;
+  recipient: string;
+  sender: string;
+}) => (
+  <Document>
+    <Page size="A4" style={styles.page}>
+      <View style={styles.section}>
+        <Text style={styles.text_people}>Dear {recipient},</Text>
+        <Text style={styles.text_message}>{message}</Text>
+        <Text style={styles.text_people}>
+          Sincerely, {sender || "Anonymous"}
+        </Text>
+        <Text style={styles.text_footer}>- Created with LeaveANote -</Text>
+      </View>
+    </Page>
+  </Document>
+);
 
 export default function Browsenote() {
   const { toast } = useToast();
@@ -104,6 +172,29 @@ export default function Browsenote() {
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage); // Update current page
     }
+  };
+
+  const handleDownloadPDF = (note: Notes) => {
+    // Generate the PDF with dynamic data from the note
+    ReactPDF.pdf(
+      <MyDocument
+        message={note.message}
+        recipient={note.recipient_name}
+        sender={note.sender_name}
+      />
+    )
+      .toBlob()
+      .then((blob) => {
+        // Create a download link for the generated PDF
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = `Note_for_${note.recipient_name}.pdf`; // Dynamic filename based on recipient
+        link.click(); // Trigger the download
+      })
+      .catch((err) => {
+        console.error("Error generating PDF:", err);
+        setError("Failed to generate PDF.");
+      });
   };
 
   return (
@@ -180,7 +271,12 @@ export default function Browsenote() {
                     </CardContent>
                   </DialogFooter>
                   <div>
-                    <Button className="w-full sm:w-min">Save</Button>
+                    <Button
+                      className="w-full sm:w-min"
+                      onClick={() => handleDownloadPDF(note)}
+                    >
+                      Save
+                    </Button>
                   </div>
                 </DialogContent>
               </Dialog>

@@ -20,8 +20,8 @@ router.get("/", (req, res) => {
 
 router.get("/for/browsenote", (req, res) => {
   const search = req.query.search || "";
-  const page = parseInt(req.query.page) || 1; // Default page to 1
-  const limit = parseInt(req.query.limit) || 10; // Default limit to 10
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
 
   let query = Note.find();
 
@@ -32,23 +32,26 @@ router.get("/for/browsenote", (req, res) => {
   }
 
   query
-    .skip((page - 1) * limit) // Skip previous pages
-    .limit(limit) // Limit to the specified number of results
+    .skip((page - 1) * limit)
+    .limit(limit)
     .sort({ published_date: -1 })
     .then((notes) => {
       if (notes.length === 0) {
         return res.json({ nonotesfound: "No notes found" });
       }
 
-      // Get the total number of notes for calculating total pages
-      Note.countDocuments().then((totalNotes) => {
-        const totalPages = Math.ceil(totalNotes / limit);
-        res.json({
-          notes,
-          totalPages,
-          currentPage: page,
-        });
-      });
+      let countQuery = Note.countDocuments(query.getQuery());
+
+      countQuery
+        .then((totalNotes) => {
+          const totalPages = Math.ceil(totalNotes / limit);
+          res.json({
+            notes,
+            totalPages,
+            currentPage: page,
+          });
+        })
+        .catch((err) => res.status(500).json({ error: err.message }));
     })
     .catch((err) => res.status(500).json({ error: err.message }));
 });
