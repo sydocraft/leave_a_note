@@ -7,13 +7,22 @@ require("dotenv").config();
 
 const app = express();
 
+const corsOptions = {
+  origin: "https://leaveanote123.vercel.app", // Allow requests from this origin
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
+  credentials: true, // Allow cookies and authorization headers
+};
+
 // use the cors middleware with the
 // origin and credentials options
 // app.use(cors({ origin: true, credentials: true }));
 
-app.use(
-  cors({ origin: "https://leaveanote123.vercel.app", credentials: true })
-);
+// app.use(
+//   cors({ origin: "https://leaveanote123.vercel.app", credentials: true })
+// );
+
+app.use(cors(corsOptions));
 
 app.options("*", cors()); // Allow preflight requests for all routes
 
