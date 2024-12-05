@@ -11,7 +11,9 @@ const app = express();
 // origin and credentials options
 // app.use(cors({ origin: true, credentials: true }));
 
-app.use(cors({ origin: "https://leaveanote.vercel.app", credentials: true }));
+app.use(
+  cors({ origin: "https://leaveanote-alpha.vercel.app", credentials: true })
+);
 
 // use the body-parser middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
