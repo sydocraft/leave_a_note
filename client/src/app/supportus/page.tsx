@@ -17,7 +17,7 @@ export default function Supportus() {
             LeaveANote is and will always be completely free to use! However, if
             you'd like to support the development and server costs, you can make
             a voluntary contribution. Any amount is deeply appreciated and helps
-            keep this service running smoothly for everyone :)
+            keep this service running smoothly for everyone.
           </p>
 
           <Button disabled className="sm:w-1/6 w-1/3 mx-auto">

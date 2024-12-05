@@ -70,7 +70,7 @@ export default function Createnote() {
 
         axios
           .post(`${process.env.NEXT_PUBLIC_API_URL}/notes`, body)
-          .then((res) => {
+          .then(() => {
             setRecipientName("");
             setMessage("");
             setSenderName("");
@@ -81,7 +81,7 @@ export default function Createnote() {
               description: "Notes succesfully submitted.",
             });
           })
-          .catch((err) => {
+          .catch(() => {
             setError("Error submitting notes.");
           });
       }
@@ -99,7 +99,7 @@ export default function Createnote() {
 
         axios
           .post(`${process.env.NEXT_PUBLIC_API_URL}/notes`, body)
-          .then((res) => {
+          .then(() => {
             setRecipientName("");
             setMessage("");
             setSenderName("");
@@ -110,7 +110,7 @@ export default function Createnote() {
               description: "Notes succesfully submitted.",
             });
           })
-          .catch((err) => {
+          .catch(() => {
             setError("Error submitting notes.");
           });
       }

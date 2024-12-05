@@ -40,7 +40,7 @@ export default function Home() {
           setNotes(res.data.notes);
         }
       })
-      .catch((err) => {
+      .catch(() => {
         setNotes([]);
       });
   }, []);

@@ -142,7 +142,7 @@ export default function Browsenote() {
             setTotalPages(res.data.totalPages);
           }
         })
-        .catch((err) => {
+        .catch(() => {
           setError("Error retrieving notes.");
           setNotes([]);
         });
