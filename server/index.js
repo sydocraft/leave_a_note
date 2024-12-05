@@ -12,7 +12,7 @@ const app = express();
 // app.use(cors({ origin: true, credentials: true }));
 
 app.use(
-  cors({ origin: "https://leaveanote-alpha.vercel.app", credentials: true })
+  cors({ origin: "https://leaveanote123.vercel.app", credentials: true })
 );
 
 app.options("*", cors()); // Allow preflight requests for all routes
