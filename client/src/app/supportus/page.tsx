@@ -15,9 +15,9 @@ export default function Supportus() {
 
           <p className="sm:text-xl text-md text-muted-foreground text-center px-8 sm:w-1/2 w-full mx-auto text-balance ">
             LeaveANote is and will always be completely free to use! However, if
-            you'd like to support the development and server costs, you can make
-            a voluntary contribution. Any amount is deeply appreciated and helps
-            keep this service running smoothly for everyone.
+            you would like to support the development and server costs, you can
+            make a voluntary contribution. Any amount is deeply appreciated and
+            helps keep this service running smoothly for everyone.
           </p>
 
           <Button disabled className="sm:w-1/6 w-1/3 mx-auto">
