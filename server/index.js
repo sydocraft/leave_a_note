@@ -15,6 +15,8 @@ app.use(
   cors({ origin: "https://leaveanote-alpha.vercel.app", credentials: true })
 );
 
+app.options("*", cors()); // Allow preflight requests for all routes
+
 // use the body-parser middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
