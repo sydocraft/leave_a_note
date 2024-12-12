@@ -9,11 +9,6 @@ const app = express();
 
 // app.use(cors({ origin: true, credentials: true }));
 
-// app.use(
-//   cors({ origin: "https://mirai-inventory.vercel.app", credentials: true })
-// );
-//
-
 const corsOptions = {
   origin: "https://leaveanote123.vercel.app", // Specify the allowed origin
   methods: ["GET", "POST"], // Specify allowed HTTP methods
