@@ -7,7 +7,21 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors({ origin: true, credentials: true }));
+// app.use(cors({ origin: true, credentials: true }));
+
+// app.use(
+//   cors({ origin: "https://mirai-inventory.vercel.app", credentials: true })
+// );
+
+const corsOptions = {
+  origin: "http://localhost:3000", // Specify the allowed origin
+  methods: ["GET", "POST"], // Specify allowed HTTP methods
+  allowedHeaders: ["Content-Type"], // Specify allowed headers
+  credentials: true, // Allow credentials (cookies, authentication)
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
 
 // use the body-parser middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
