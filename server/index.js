@@ -16,8 +16,9 @@ const corsOptions = {
   credentials: true, // Allow credentials (cookies, authentication)
 };
 
-// Apply CORS middleware
 app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions));
 
 // use the body-parser middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json());
