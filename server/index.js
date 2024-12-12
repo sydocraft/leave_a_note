@@ -15,7 +15,7 @@ const app = express();
 //
 
 const corsOptions = {
-  origin: "http://localhost:3000", // Specify the allowed origin
+  origin: "https://leaveanote123.vercel.app", // Specify the allowed origin
   methods: ["GET", "POST"], // Specify allowed HTTP methods
   allowedHeaders: ["Content-Type"], // Specify allowed headers
   credentials: true, // Allow credentials (cookies, authentication)

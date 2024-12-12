@@ -27,6 +27,8 @@ interface Notes {
   published_date: Date;
 }
 
+//rebuild
+
 export default function Home() {
   const [notes, setNotes] = useState<Notes[]>([]);
 
