@@ -12,6 +12,7 @@ const app = express();
 // app.use(
 //   cors({ origin: "https://mirai-inventory.vercel.app", credentials: true })
 // );
+//
 
 const corsOptions = {
   origin: "http://localhost:3000", // Specify the allowed origin
