@@ -30,7 +30,7 @@ import {
 } from "@react-pdf/renderer";
 import ReactPDF from "@react-pdf/renderer";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, LoaderCircle } from "lucide-react";
 
 import { Sour_Gummy } from "next/font/google";
 
@@ -113,6 +113,7 @@ export default function Browsenote() {
   const [notes, setNotes] = useState<Notes[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (error) {
@@ -137,13 +138,17 @@ export default function Browsenote() {
             setError("No notes found.");
             setNotes([]);
             setTotalPages(1);
+            setIsLoading(false);
           } else {
             setNotes(res.data.notes);
             setTotalPages(res.data.totalPages);
+            setIsLoading(false);
           }
         })
         .catch(() => {
           setError("Error retrieving notes.");
+          setIsLoading(false);
+
           setNotes([]);
         });
     }
@@ -157,6 +162,7 @@ export default function Browsenote() {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
 
     if (!recipientName) {
       setError("Recipient name are required.");
@@ -211,9 +217,15 @@ export default function Browsenote() {
             value={recipientName}
             onChange={handleRecipientNameChange}
           />
-          <Button type="submit" onClick={handleSubmit}>
-            <Search />
-            Search
+          <Button type="submit" onClick={handleSubmit} disabled={isLoading}>
+            {isLoading ? (
+              <LoaderCircle className="animate-spin" />
+            ) : (
+              <>
+                <Search />
+                Search
+              </>
+            )}
           </Button>
         </div>
 

@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Send } from "lucide-react";
+import { Send, LoaderCircle } from "lucide-react";
 import { Sour_Gummy } from "next/font/google";
 
 const SG = Sour_Gummy({ subsets: ["latin"] });
@@ -22,6 +22,7 @@ export default function Createnote() {
   const [message, setMessage] = useState<string>("");
   const [senderName, setSenderName] = useState<string>("");
   const [sendAnon, setSendAnon] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (error) {
@@ -55,6 +56,7 @@ export default function Createnote() {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    setIsLoading(true);
 
     if (sendAnon) {
       if (!recipientName || !message) {
@@ -80,9 +82,11 @@ export default function Createnote() {
               title: "Yay!",
               description: "Notes succesfully submitted.",
             });
+            setIsLoading(false);
           })
           .catch(() => {
             setError("Error submitting notes.");
+            setIsLoading(false);
           });
       }
     } else {
@@ -109,9 +113,12 @@ export default function Createnote() {
               title: "Yay!",
               description: "Notes succesfully submitted.",
             });
+
+            setIsLoading(false);
           })
           .catch(() => {
             setError("Error submitting notes.");
+            setIsLoading(false);
           });
       }
     }
@@ -169,8 +176,17 @@ export default function Createnote() {
                 </label>
               </div>
 
-              <Button className="mt-5" type="submit" onClick={handleSubmit}>
-                Submit
+              <Button
+                className="mt-5"
+                type="submit"
+                onClick={handleSubmit}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <LoaderCircle className="animate-spin" />
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </div>
           </CardContent>
