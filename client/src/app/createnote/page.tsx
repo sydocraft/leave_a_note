@@ -4,7 +4,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
-
+import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -41,7 +41,9 @@ export default function Createnote() {
   ) => {
     setRecipientName(event.target.value);
   };
-  const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleMessageChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     setMessage(event.target.value);
   };
   const handleSenderNameChange = (
@@ -151,8 +153,8 @@ export default function Createnote() {
               </div>
               <div className="flex flex-col gap-3">
                 <Label>Message</Label>
-                <Input
-                  type="text"
+                <Textarea
+                  placeholder="Type your message here."
                   value={message}
                   onChange={handleMessageChange}
                   maxLength={600}
