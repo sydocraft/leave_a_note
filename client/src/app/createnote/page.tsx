@@ -154,6 +154,7 @@ export default function Createnote() {
               <div className="flex flex-col gap-3">
                 <Label>Message</Label>
                 <Textarea
+                  className="resize-y"
                   placeholder="Type your message here."
                   value={message}
                   onChange={handleMessageChange}
