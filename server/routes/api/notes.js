@@ -63,7 +63,7 @@ router.get("/for/mainpage", (req, res) => {
 
   query
     .limit(limit)
-    .sort({ published_date: -1 })
+    .sort({ published_date: 1 })
     .then((notes) => {
       if (notes.length === 0) {
         return res.json({ nonotesfound: "No notes found" });

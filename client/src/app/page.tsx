@@ -34,16 +34,17 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL}/notes/for/browsenote`)
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/notes/for/mainpage`)
       .then((res) => {
-        if (res.data.nonotesfound) {
+        if (res.data.length === 0) {
           setNotes([]);
         } else {
-          setNotes(res.data.notes);
+          setNotes(res.data);
         }
       })
-      .catch(() => {
+      .catch((err) => {
         setNotes([]);
+        console.log(err);
       });
   }, []);
 
